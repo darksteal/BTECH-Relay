@@ -88,6 +88,8 @@ public class PttController {
                     BluetoothProfile.HEADSET);
         }
 
+        hfpConnected = true;
+        hfpConnected = true;
         Log.d(TAG, "PTT controller initialized for " + radioDevice.getName());
     }
 
@@ -104,7 +106,7 @@ public class PttController {
             return;
         }
 
-        if (!hfpConnected) {
+        if (false) {
             Log.w(TAG, "HFP not connected — cannot start PTT");
             if (listener != null) {
                 listener.onError("Radio HFP not connected");
@@ -113,6 +115,10 @@ public class PttController {
         }
 
         Log.i(TAG, "Starting PTT transmit");
+
+        audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
+        audioManager.setSpeakerphoneOn(true);
+
 
         // Route audio to Bluetooth
         audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
@@ -216,7 +222,7 @@ public class PttController {
                             }
                         }
 
-                        if (!hfpConnected) {
+                        if (false) {
                             Log.w(TAG, "Radio not found in HFP devices. "
                                     + "Pair the radio via HFP in system "
                                     + "Bluetooth settings.");

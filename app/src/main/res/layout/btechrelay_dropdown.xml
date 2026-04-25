@@ -102,7 +102,38 @@
 
         </LinearLayout>
 
-        <!-- ==================== ENCRYPTION ==================== -->
+        
+        <!-- ==================== PTT ==================== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FF2D2D2D"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="VOICE PTT"
+                android:textColor="#FFFF5252"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:paddingBottom="6dp" />
+
+            <Button
+                android:id="@+id/btn_ptt"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="PUSH TO TALK"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:backgroundTint="#FFD32F2F"
+                android:textColor="#FFFFFFFF" />
+
+        </LinearLayout>
+
+<!-- ==================== ENCRYPTION ==================== -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
