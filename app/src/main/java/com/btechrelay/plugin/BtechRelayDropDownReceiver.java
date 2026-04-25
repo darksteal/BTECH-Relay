@@ -234,14 +234,14 @@ public class BtechRelayDropDownReceiver extends DropDownReceiver
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         appendLog("PTT DOWN");
-                        pttController.startTransmit();
+                        sendPing();
                         btnPtt.setText("TRANSMITTING...");
                         return true;
 
                     case MotionEvent.ACTION_UP:
                     case MotionEvent.ACTION_CANCEL:
                         appendLog("PTT UP");
-                        pttController.stopTransmit();
+                        // release handled later
                         btnPtt.setText("PUSH TO TALK");
                         return true;
                 }
