@@ -40,6 +40,16 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class BtConnectionManager {
 
+    public void testPtt() {
+        try {
+            byte[] test = new byte[]{0x00, 0x01, 0x02};
+            sendKissFrame(test);
+            android.util.Log.i("BtechRelay.TX", "TEST PTT FRAME SENT");
+        } catch (Exception e) {
+            android.util.Log.e("BtechRelay.TX", "TEST TX FAILED", e);
+        }
+    }
+
     private static final String TAG = "BtechRelay.BT";
 
     // Standard SPP UUID
