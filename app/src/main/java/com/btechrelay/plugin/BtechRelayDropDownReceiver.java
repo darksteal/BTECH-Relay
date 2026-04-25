@@ -82,6 +82,7 @@ public class BtechRelayDropDownReceiver extends DropDownReceiver
     private TextView teamColorText;
     private Button btnScan;
     private Button btnDisconnect;
+    private Button btnPtt;
 
     // Interactive controls
     private Switch switchEncryption;
@@ -202,6 +203,7 @@ public class BtechRelayDropDownReceiver extends DropDownReceiver
         teamColorText = rootView.findViewById(getId("text_team_color"));
         btnScan = rootView.findViewById(getId("btn_scan"));
         btnDisconnect = rootView.findViewById(getId("btn_disconnect"));
+        btnPtt = rootView.findViewById(getId("btn_ptt"));
 
         // Interactive switches
         switchEncryption = rootView.findViewById(getId("switch_encryption"));
@@ -225,6 +227,28 @@ public class BtechRelayDropDownReceiver extends DropDownReceiver
         btnDisconnect.setOnClickListener(v -> {
             btManager.disconnect();
         });
+
+        // --- PTT BUTTON (PRESS & HOLD) ---
+        if (btnPtt != null && pttController != null) {
+            btnPtt.setOnTouchListener((v, event) -> {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        appendLog("PTT DOWN");
+                        pttController.startTransmit();
+                        btnPtt.setText("TRANSMITTING...");
+                        return true;
+
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
+                        appendLog("PTT UP");
+                        pttController.stopTransmit();
+                        btnPtt.setText("PUSH TO TALK");
+                        return true;
+                }
+                return false;
+            });
+        }
+
 
         // --- Encryption switch ---
         if (switchEncryption != null) {
